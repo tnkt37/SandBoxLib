@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpSandbox", "SecurityCampApplication\CSharpSandbox.csproj", "{C7674FC3-4648-4520-B1E1-2266B98D5226}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ScriptRunner", "ScriptRunner\ScriptRunner.csproj", "{8FFD1CA3-F7DD-44AA-96D3-606E7090DF89}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C7674FC3-4648-4520-B1E1-2266B98D5226}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C7674FC3-4648-4520-B1E1-2266B98D5226}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C7674FC3-4648-4520-B1E1-2266B98D5226}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C7674FC3-4648-4520-B1E1-2266B98D5226}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8FFD1CA3-F7DD-44AA-96D3-606E7090DF89}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8FFD1CA3-F7DD-44AA-96D3-606E7090DF89}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8FFD1CA3-F7DD-44AA-96D3-606E7090DF89}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8FFD1CA3-F7DD-44AA-96D3-606E7090DF89}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
