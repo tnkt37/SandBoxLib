@@ -39,11 +39,6 @@ public class Program
     }
 }
 
-[Serializable]
-public class Test
-{
-    
-}
 ";
             var scripts = new[] { scriptBody };
             var assemplyNames = new[]
@@ -57,18 +52,20 @@ public class Test
                 IncludeDebugInformation = true,
                 GenerateExecutable = false,
                 GenerateInMemory = false,
+                OutputAssembly = "asm\\test.dll",
             };
-            
+            Directory.CreateDirectory("asm");
             var codeProvider = new CSharpCodeProvider(new Dictionary<string, string> { { "CompilerVersion", "v4.0" } });
             var results = codeProvider.CompileAssemblyFromSource(param, scripts);
             //providerLits.Add(results);
             //results.CompiledAssembly.GetType("Program").GetMethod("Main").Invoke(new object(), new object[0]);
-            var path = results.PathToAssembly;
+            var path = Path.GetFullPath(results.PathToAssembly);
 
             AppDomain appDomain = SandBox("testdomin", path);
 
             ScriptManager manager;
             manager = appDomain.CreateInstanceAndUnwrap("ScriptRunner", "ScriptRunnerLibrary.ScriptManager") as ScriptRunnerLibrary.ScriptManager;
+            //コンストラクタに引数渡したいです
 
             manager.LoadAssembly(path);
             //TODO Assembly.LoadはGCに回収されないのか調べる(されなさそう);
@@ -97,6 +94,8 @@ public class Test
             //permSet.AddPermission(new FileIOPermission(FileIOPermissionAccess.Write, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Untrusted")));//指定したディレクトリへの書き込み権限
 
             //TODO その他のpermission調べる
+            //http://msdn.microsoft.com/ja-jp/library/system.security.permissions(v=vs.110).aspx
+            //インターネットアクセス制御とか無いの？
 
             //permSet.AddPermission(new FileIOPermission(FileIOPermissionAccess.AllAccess, System.Security.AccessControl.AccessControlActions.None, Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Untrusted")));
             //System.Security.AccessControl.AccessControlActionsが謎
