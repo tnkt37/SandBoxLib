@@ -10,8 +10,10 @@ using System.Linq.Expressions;
 
 namespace ScriptRunnerLibrary
 {
+    //TODO: FSharp, VS, JScript対応のため同じようなメンバを持ったインターフェースを作る
+
     /// <summary>
-    /// コンパイル済みスクリプトを表すクラス<br/>
+    /// スクリプトをコンパイルしてアセンブリを生成するクラス<br/>
     /// 別 AppDomain で動作させることを前提に MarshalByRefObject を継承している。
     /// http://dora.bk.tsukuba.ac.jp/~takeuchi/index.php?%A5%D7%A5%ED%A5%B0%A5%E9%A5%DF%A5%F3%A5%B0%2F%A3%C3%A1%F4%2F%A3%C3%A1%F4%A4%C7%BD%F1%A4%AB%A4%EC%A4%BF%A5%B9%A5%AF%A5%EA%A5%D7%A5%C8%A4%F2%BC%C2%B9%D4%A4%B9%A4%EB
     /// </summary>

@@ -44,7 +44,7 @@ namespace ScriptRunnerLibrary
         {
             LoadCompiler();
             var isSucceed = compiler.Compile(scriptSource, assemblyNames, compilerDomain.FriendlyName);
-            if (!isSucceed) throw new Exception(compiler.CompilerResults.Errors.ToString());
+            if (!isSucceed) throw new Exception(compiler.GetErrorMessages());
             if (loadAssembly)
                 LoadManager(compiler);
         }
@@ -56,7 +56,8 @@ namespace ScriptRunnerLibrary
         public ScriptRunner(bool loadAssembly, params string[] scriptSources)
         {
             LoadCompiler();
-            compiler.Compile(scriptSources, compilerDomain.FriendlyName);
+            var isSucceed = compiler.Compile(scriptSources, compilerDomain.FriendlyName);
+            if (!isSucceed) throw new Exception(compiler.GetErrorMessages());
             if (loadAssembly)
                 LoadManager(compiler, null);
         }
@@ -194,6 +195,11 @@ namespace ScriptRunnerLibrary
             var result = manager.InvokeClassFunction(ClassName, FunctionName, Parameters);
             ResetCurrentDirectory();
             return result;
+        }
+
+        public void InvokeEntoryPoint(string className, object[] parameters = null)
+        {
+            InvokeClassFunction(className, "Main", parameters ?? new object[0]);
         }
 
         /// <summary>
